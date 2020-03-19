@@ -41,7 +41,7 @@ router.patch('/tasks/:id', async (req, res) => {
     const updates = Object.keys(req.body);
     const allowedUpdates = ['description', 'completed'];
     const isValidUpdate = updates.every((update) => allowedUpdates.includes(update))
-    if(!isValidUpdate) {
+    if (!isValidUpdate) {
         return res.status(400).send('Invalid Updates!');
     }
 
@@ -52,7 +52,7 @@ router.patch('/tasks/:id', async (req, res) => {
 
         await task.save();
 
-        if(!task) {
+        if (!task) {
             return res.status(404).send();
         }
         res.send(task);
@@ -64,7 +64,7 @@ router.patch('/tasks/:id', async (req, res) => {
 router.delete('/tasks/:id', async (req, res) => {
     try {
         const task = await Task.findByIdAndDelete(req.params.id);
-        if(!task) {
+        if (!task) {
             res.status(400).send();
         }
         res.send(task);
