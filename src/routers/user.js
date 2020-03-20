@@ -4,6 +4,7 @@ const multer = require('multer');
 const sharp = require('sharp');
 const User = require('../models/user');
 const auth = require('../middleware/auth');
+const { sendWelcomeEmail } = require('../emails/account');
 const upload = multer({
     // dest: 'avatars',     // This is used to store the files on server instead of db
     limits: {
@@ -24,6 +25,7 @@ router.post('/users', async (req, res) => {
 
     try {
         await user.save();
+        sendWelcomeEmail(user.email, user.name);
         const token = await user.generateAuthToken();
         res.status(201).send({ user, token });
     } catch (error) {
