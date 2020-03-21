@@ -1,0 +1,1493 @@
+{
+	"info": {
+		"_postman_id": "ee72cb17-4a5d-4eca-a785-a2bcdd3fc4d8",
+		"name": "Task-Manager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9398f3c9-db0f-4b21-8050-6b31e5d7ed0a",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"});",
+							"if(pm.response.to.have.status(201)) {",
+							"    pm.environment.set('AuthToken', pm.response.json().token)",
+							"}",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"Yash Jain\",\n    \"email\": \"yashjain0898@gmail.com\",\n    \"age\": 21,\n    \"password\": \"Pwd@2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users"
+					]
+				},
+				"description": "Creating a new user"
+			},
+			"response": [
+				{
+					"name": "Create User Example",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Yash Jain\",\n    \"email\": \"yashjain0898@gmail.com\",\n    \"age\": 21,\n    \"password\": \"Pwd@2020\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "373"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"175-VyFeZRlH+pxE74/w2trZUYuvfCY\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:17:11 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"age\": 21,\n        \"_id\": \"5e7595462165a8001767a897\",\n        \"name\": \"Yash Jain\",\n        \"email\": \"yashjain0898@gmail.com\",\n        \"createdAt\": \"2020-03-21T04:17:10.844Z\",\n        \"updatedAt\": \"2020-03-21T04:17:11.140Z\",\n        \"__v\": 1\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTc1OTU0NjIxNjVhODAwMTc2N2E4OTciLCJpYXQiOjE1ODQ3NjQyMzEsImV4cCI6MTU4NTM2OTAzMX0.rhA-aunuNhIAqZWa0091zHAWWFrovBqy6yMWSmk0U1w\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Logout User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1eeb900d-2d68-454c-9a24-1d1369e26db9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/user/logout",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"logout"
+					]
+				},
+				"description": "Logout current session"
+			},
+			"response": [
+				{
+					"name": "Logout Current Session",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/logout",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"logout"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:41:38 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Login User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "f2506a9b-891c-4eb9-85ce-7c5254976993",
+						"exec": [
+							"if(pm.response.code === 200) {",
+							"    pm.environment.set('AuthToken', pm.response.json().token);",
+							"}",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"email\": \"yashjain0898@gmail.com\",\n    \"password\": \"Pwd@2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login User",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"yashjain0898@gmail.com\",\n    \"password\": \"ABCD1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "373"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"175-HlkRQitrLeBIKibrStHR3W9O/+U\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:44:20 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"user\": {\n        \"age\": 21,\n        \"_id\": \"5e7595462165a8001767a897\",\n        \"name\": \"Yash Jain\",\n        \"email\": \"yashjain0898@gmail.com\",\n        \"createdAt\": \"2020-03-21T04:17:10.844Z\",\n        \"updatedAt\": \"2020-03-21T04:44:19.885Z\",\n        \"__v\": 3\n    },\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZTc1OTU0NjIxNjVhODAwMTc2N2E4OTciLCJpYXQiOjE1ODQ3NjU4NTksImV4cCI6MTU4NTM3MDY1OX0.porddYaHIPd8C078R-RpAK_kJgBzli1Hx6XLiobi3sM\"\n}"
+				},
+				{
+					"name": "Login User - Invalid Credentials",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"yashjain0898@gmail.com\",\n    \"password\": \"Pwd@2020\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/user/login",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"login"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:43:03 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Upload Avatar",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "85919c1e-d9fd-4335-a34c-9dcd4fcf4462",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "avatar",
+							"type": "file",
+							"src": "/C:/Users/yashj/Downloads/Compressed/node-course-images/profile-pic.jpg"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{baseUrl}}/users/me/avatar",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"users",
+						"me",
+						"avatar"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Upload Error for File type",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/yashj/Downloads/Compressed/node-course-images/sample-pdf-file.pdf"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/me/avatar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"avatar"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "65"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"41-w2NPoc35Xn9yRdcGjQ1vYyAVuhE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:36:40 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"File must be an image with extention jpg, jpeg or png\"\n}"
+				},
+				{
+					"name": "Upload Avatar",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "/C:/Users/yashj/Downloads/Compressed/node-course-images/profile-pic.jpg"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{baseUrl}}/users/me/avatar",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"users",
+								"me",
+								"avatar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:36:13 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Read User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "df8cf10d-d769-4fe3-9a80-a986949feb46",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/user/me",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				},
+				"description": "Reading logged-in user"
+			},
+			"response": [
+				{
+					"name": "Read Logged-in User",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "181"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"b5-+TF6+gpYLFwg5sQaOYwZizi5CMk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:18:53 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": 21,\n    \"_id\": \"5e7595462165a8001767a897\",\n    \"name\": \"Yash Jain\",\n    \"email\": \"yashjain0898@gmail.com\",\n    \"createdAt\": \"2020-03-21T04:17:10.844Z\",\n    \"updatedAt\": \"2020-03-21T04:17:11.140Z\",\n    \"__v\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "Create Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6bdcc78-914d-4d32-ad8f-d277021ef6ee",
+						"exec": [
+							"pm.test(\"Status code is 201\", function () {",
+							"    pm.response.to.have.status(201);",
+							"    pm.environment.set('TaskID', pm.response.json()._id);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"Push Source-code to GitHub\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tasks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Creating a task with owner as logged-in user"
+			},
+			"response": [
+				{
+					"name": "Create Task",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Watch Rise of Skywalker\",\n\t\"completed\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tasks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "213"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"d5-tuC4IjOZg2WPbgmoG8/Po2f7uSM\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:24:25 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"completed\": false,\n    \"_id\": \"5e7596f92165a8001767a89b\",\n    \"description\": \"Watch Rise of Skywalker\",\n    \"owner\": \"5e7595462165a8001767a897\",\n    \"createdAt\": \"2020-03-21T04:24:25.717Z\",\n    \"updatedAt\": \"2020-03-21T04:24:25.717Z\",\n    \"__v\": 0\n}"
+				},
+				{
+					"name": "Create Task with default field (completed)",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Push Source-code to GitHub\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tasks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "216"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"d8-T5L2/ElXGa4ux974ntdJDMRyg+o\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:30:55 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"completed\": false,\n    \"_id\": \"5e75987f2165a8001767a89c\",\n    \"description\": \"Push Source-code to GitHub\",\n    \"owner\": \"5e7595462165a8001767a897\",\n    \"createdAt\": \"2020-03-21T04:30:55.568Z\",\n    \"updatedAt\": \"2020-03-21T04:30:55.568Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Read Tasks",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "6dcf9ac2-5f20-4da7-b614-7e56e1877f43",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tasks",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks"
+					]
+				},
+				"description": "Reading Tasks of logged-in user"
+			},
+			"response": [
+				{
+					"name": "Read Tasks",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "651"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"28b-9MoAZ1ZJqxx4zmz43TvZpudvZhE\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:31:58 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"completed\": false,\n        \"_id\": \"5e7596f02165a8001767a89a\",\n        \"description\": \"Completing API documentation\",\n        \"owner\": \"5e7595462165a8001767a897\",\n        \"createdAt\": \"2020-03-21T04:24:16.373Z\",\n        \"updatedAt\": \"2020-03-21T04:24:16.373Z\",\n        \"__v\": 0\n    },\n    {\n        \"completed\": false,\n        \"_id\": \"5e7596f92165a8001767a89b\",\n        \"description\": \"Watch Rise of Skywalker\",\n        \"owner\": \"5e7595462165a8001767a897\",\n        \"createdAt\": \"2020-03-21T04:24:25.717Z\",\n        \"updatedAt\": \"2020-03-21T04:31:52.096Z\",\n        \"__v\": 0\n    },\n    {\n        \"completed\": false,\n        \"_id\": \"5e75987f2165a8001767a89c\",\n        \"description\": \"Push Source-code to GitHub\",\n        \"owner\": \"5e7595462165a8001767a897\",\n        \"createdAt\": \"2020-03-21T04:30:55.568Z\",\n        \"updatedAt\": \"2020-03-21T04:30:55.568Z\",\n        \"__v\": 0\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Update Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3c50666b-774f-4d56-bcce-3768202f8ea7",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"Watch: The Rise of Skywalker\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/tasks/{{TaskID}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks",
+						"{{TaskID}}"
+					]
+				},
+				"description": "Updating task or completed status of a task or both"
+			},
+			"response": [
+				{
+					"name": "Update Task",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"description\": \"Watch: The Rise of Skywalker\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tasks/5e7596f92165a8001767a89b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks",
+								"5e7596f92165a8001767a89b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"da-bojWS9T6zvrCzyBrXTSKiAG5DRk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:33:07 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"completed\": false,\n    \"_id\": \"5e7596f92165a8001767a89b\",\n    \"description\": \"Watch: The Rise of Skywalker\",\n    \"owner\": \"5e7595462165a8001767a897\",\n    \"createdAt\": \"2020-03-21T04:24:25.717Z\",\n    \"updatedAt\": \"2020-03-21T04:33:06.920Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Read Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9fa23d0f-9b7b-40ca-9889-00c89ed26e54",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tasks/{{TaskID}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks",
+						"{{TaskID}}"
+					]
+				},
+				"description": "Read a task by it's id and owner as logged-in user"
+			},
+			"response": [
+				{
+					"name": "Read Task by ID",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/5e7596f92165a8001767a89b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks",
+								"5e7596f92165a8001767a89b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"da-bojWS9T6zvrCzyBrXTSKiAG5DRk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:34:48 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"completed\": false,\n    \"_id\": \"5e7596f92165a8001767a89b\",\n    \"description\": \"Watch: The Rise of Skywalker\",\n    \"owner\": \"5e7595462165a8001767a897\",\n    \"createdAt\": \"2020-03-21T04:24:25.717Z\",\n    \"updatedAt\": \"2020-03-21T04:33:06.920Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Task",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c73875a5-b43c-4087-9fca-f2db911b4b3c",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/tasks/{{TaskID}}",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"tasks",
+						"{{TaskID}}"
+					]
+				},
+				"description": "Delete a task by ID whose owner is logged-in user"
+			},
+			"response": [
+				{
+					"name": "Delete Task",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/tasks/5e7596f92165a8001767a89b",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tasks",
+								"5e7596f92165a8001767a89b"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "218"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"da-bojWS9T6zvrCzyBrXTSKiAG5DRk\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:40:52 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"completed\": false,\n    \"_id\": \"5e7596f92165a8001767a89b\",\n    \"description\": \"Watch: The Rise of Skywalker\",\n    \"owner\": \"5e7595462165a8001767a897\",\n    \"createdAt\": \"2020-03-21T04:24:25.717Z\",\n    \"updatedAt\": \"2020-03-21T04:33:06.920Z\",\n    \"__v\": 0\n}"
+				}
+			]
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "699f3dda-7b0b-4774-9c66-227bcc7da3b5",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"password\": \"Pwd@2020\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/user/me",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				},
+				"description": "Updating details for logged-in user"
+			},
+			"response": []
+		},
+		{
+			"name": "Logout All",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "8784e1c0-38c8-445e-98d8-097914f354a3",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/user/logoutAll",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"logoutAll"
+					]
+				},
+				"description": "Logout of all sessions"
+			},
+			"response": [
+				{
+					"name": "Logout All Sessions",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/logoutAll",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"logoutAll"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "plain",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:45:04 GMT"
+						},
+						{
+							"key": "Content-Length",
+							"value": "0"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": null
+				}
+			]
+		},
+		{
+			"name": "Delete User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "422155e0-bff1-4a31-bbfc-fec32991aedf",
+						"exec": [
+							"pm.test(\"Status code is 401\", function () {",
+							"    pm.response.to.have.status(401);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/user/me",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"user",
+						"me"
+					]
+				},
+				"description": "Deleting logged-in user and corresponding tasks"
+			},
+			"response": [
+				{
+					"name": "Delete User - Error (User Not Logged In)",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"status": "Unauthorized",
+					"code": 401,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "31"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"1f-qy/JmEmIF7efO9xF471xZhP3zE0\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:46:32 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"error\": \"Please Authenticate\"\n}"
+				},
+				{
+					"name": "Delete User",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/user/me",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"user",
+								"me"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Server",
+							"value": "Cowboy"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "181"
+						},
+						{
+							"key": "Etag",
+							"value": "W/\"b5-1evX+4RLfz/oMIDUm6NkOa2MaFU\""
+						},
+						{
+							"key": "Date",
+							"value": "Sat, 21 Mar 2020 04:47:34 GMT"
+						},
+						{
+							"key": "Via",
+							"value": "1.1 vegur"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"age\": 21,\n    \"_id\": \"5e7595462165a8001767a897\",\n    \"name\": \"Yash Jain\",\n    \"email\": \"yashjain0898@gmail.com\",\n    \"createdAt\": \"2020-03-21T04:17:10.844Z\",\n    \"updatedAt\": \"2020-03-21T04:47:23.972Z\",\n    \"__v\": 5\n}"
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{AuthToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "d956fea3-2d1c-4e8a-b35d-0c3361c6f0de",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "d3dc49a4-47b8-4209-9aa1-7c0627191641",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
